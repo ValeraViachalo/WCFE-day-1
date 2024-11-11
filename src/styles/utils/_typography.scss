@@ -2,10 +2,20 @@
 
 %h1 {
   font-family: var(--font-inter), sans-serif;
-  font-size: VW(60);
+  font-size: VW(128);
   font-style: normal;
-  font-weight: bold;
-  line-height: 142%;
+  font-weight: normal;
+  line-height: 100%;
+  text-transform: uppercase;
+  letter-spacing: normal;
+}
+
+%h2 {
+  font-family: var(--font-inter), sans-serif;
+  font-size: VW(30);
+  font-style: normal;
+  font-weight: normal;
+  line-height: 100%;
   text-transform: uppercase;
   letter-spacing: normal;
 }

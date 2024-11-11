@@ -1,15 +1,129 @@
 .home {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: VW(10);
+  text-transform: uppercase;
+  position: relative;
 
-  .logo {
-    width: VW(580);
-    height: VW(120);
+  .top {
+    padding: VW(50);
+
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      gap: VW(70);
+    }
+
+    .paragraph_wrapper {
+      display: flex;
+      flex-direction: column;
+
+      &:nth-of-type(1) {
+        width: VW(276);
+      }
+      &:nth-of-type(2) {
+        width: VW(446);
+      }
+
+      .title {
+        margin-bottom: VW(20);
+      }
+    }
+
+    .logo {
+      width: VW(220);
+      height: VW(40);
+      position: relative;
+    }
+  }
+
+  .title {
+    &_wrapper {
+      position: absolute;
+      inset: auto auto VW(50) VW(50);
+    }
+
+    &_top {
+      display: flex;
+      gap: VW(30);
+    }
+  }
+
+  .arrow {
+    width: VW(90);
+    height: VW(90);
+
+    // background-color: $blue-100;
+    border-radius: 100vw;
+
     position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .bg {
+      stroke-dasharray: 310;
+      stroke-dashoffset: 310;
+      border-radius: 100vw;
+      background-color: transparent;
+
+      animation: bgPresence 1s 0.2s cubic-bezier(0.83, 0, 0.17, 1) forwards;
+    }
+
+    &_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: VW(20);
+
+      color: $blue-100;
+    }
+
+    &_title {
+      width: VW(340);
+    }
+
+    .icon {
+      width: 70%;
+      height: 70%;
+      position: absolute;
+      opacity: 0;
+      animation: iconPresence 0.3s 1s ease forwards;
+    }
+  }
+
+  .background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    filter: brightness(0.8);
+
+    clip-path: inset(100% 30% 5%);
+  }
+}
+
+@keyframes bgPresence {
+  0% {
+    stroke-dashoffset: 310;
+    background-color: transparent;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    background-color: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    background-color: $blue-100;
+  }
+}
+
+@keyframes iconPresence {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

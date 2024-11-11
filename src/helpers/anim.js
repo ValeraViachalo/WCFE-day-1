@@ -1,3 +1,11 @@
+export const presenceAnim = (variants, state) => {
+  return {
+    initial: "initial",
+    animate: state ? "animate" : "initial",
+    variants,
+  };
+};
+
 export const anim = (variants) => {
   return {
     initial: "initial",
@@ -7,36 +15,24 @@ export const anim = (variants) => {
   };
 };
 
-export const LoaderAnim = {
-  wrapper: {
-    initial: {
-      opacity: 1
-    },
-    animate: {
-      opacity: 1,
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        delay: 1,
-        duration: .5,
-      }
-    }
+const easeOutExpo = [0.16, 1, 0.3, 1]
+
+export const TitlePresence = {
+  initial: {
+    clipPath: "inset(0% 0% 100% 0%)",
+    y: "100%",
   },
-  logo: {
-    initial: {
-      opacity: 0,
-      filter: "blur(1vw)",
+  animate: ({id, duration}) => ({
+    clipPath: "inset(0% 0% -20% 0%)",
+    y: "0%",
+    transition: {
+      duration,
+      ease: easeOutExpo,
+      delay: (id + 1) * 0.1,
     },
-    animate: {
-      opacity: 1,
-      filter: "blur(0vw)",
-      transition: {
-        duration: .5
-      }
-    },
-    exit: {
-      opacity: 1,
-    }
-  }
+  }),
+  exit: {
+    clipPath: "inset(0% 0% 100% 0%)",
+    y: "100%",
+  },
 }
