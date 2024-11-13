@@ -54,7 +54,6 @@
     width: VW(90);
     height: VW(90);
 
-    // background-color: $blue-100;
     border-radius: 100vw;
 
     position: relative;
@@ -79,18 +78,80 @@
       gap: VW(20);
 
       color: $blue-100;
+
+      cursor: pointer;
+
+      @include hover {
+        .arrow_title {
+          &_text {
+            transform: translateY(-100%);
+          }
+        }
+
+        .icon {
+          stroke-dashoffset: 34 !important; // 100%
+        }
+      }
     }
 
     &_title {
-      width: VW(340);
+      height: VW(32); // Font-size + 2px
+      overflow-y: clip;
+
+      &_text {
+        display: block;
+        text-shadow: 0 VW(34) 0; // Text wrapper + gap 2px
+        transition: transform 0.7s cubic-bezier(0.65, 0.05, 0, 1);
+
+        &_2 {
+          transition-delay: 0.05s;
+        }
+      }
+
+      &_wrapper {
+        width: VW(340);
+      }
     }
 
     .icon {
       width: 70%;
       height: 70%;
       position: absolute;
+      animation: iconPresence 1s 1.2s ease forwards;
       opacity: 0;
-      animation: iconPresence 0.3s 1s ease forwards;
+      transition: stroke-dashoffset 0.8s $easeOutQuad;
+
+      stroke-dasharray: 17;
+      stroke-dashoffset: 0; // 0%
+      // stroke-dashoffset: 34; // 100%
+      // stroke-dashoffset: 17; // 50% Fully invisible
+    }
+  }
+
+  .data {
+    position: absolute;
+    bottom: VW(50);
+    right: VW(50);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: end;
+    gap: VW(5);
+
+    &_top {
+      display: flex;
+      align-items: center;
+      gap: VW(5);
+
+      &_icon {
+        width: VW(10);
+        height: VW(10);
+        border-radius: 10vw;
+        background-color: #0AAFD8;
+        opacity: 0;
+        animation: iconPresenceInfinite 5s 1.2s ease infinite;
+      }
     }
   }
 
@@ -125,5 +186,20 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes iconPresenceInfinite {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

@@ -30,6 +30,10 @@ export const TitlePresence = {
       ease: easeOutExpo,
       delay: (id + 1) * 0.1,
     },
+    transitionEnd: {
+      clipPath: "none",
+      y: "auto",
+    }
   }),
   exit: {
     clipPath: "inset(0% 0% 100% 0%)",

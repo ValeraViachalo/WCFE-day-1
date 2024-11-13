@@ -41,6 +41,7 @@ export default function HomePage() {
 
     sequence();
   }, [controls, backgroundRef]);
+
   return (
     <div className={s.home}>
       <motion.div
@@ -119,8 +120,29 @@ export default function HomePage() {
                   />
                 </svg>
               </div>
-              <h2 className={s.arrow_title}>
-                <Paragraph text="Learn more about the marathon" index={4} />
+              <h2 className={s.arrow_title_wrapper}>
+                <motion.div
+                  className={s.arrow_title}
+                  {...presenceAnim(TitlePresence, loaderFinished)}
+                  custom={{ id: 4, duration: 1 }}
+                >
+                  <p
+                    className={`${s.arrow_title_text} ${s.arrow_title_text_1}`}
+                  >
+                    Learn more about
+                  </p>
+                </motion.div>
+                <motion.div
+                  className={s.arrow_title}
+                  {...presenceAnim(TitlePresence, loaderFinished)}
+                  custom={{ id: 5, duration: 1 }}
+                >
+                  <p
+                    className={`${s.arrow_title_text} ${s.arrow_title_text_2}`}
+                  >
+                    the marathon
+                  </p>
+                </motion.div>
               </h2>
             </div>
           )}
@@ -130,6 +152,17 @@ export default function HomePage() {
           <Paragraph text="with a single step." index={3} />
         </h1>
       </div>
+      {loaderFinished && (
+        <div className={s.data}>
+          <div className={`${s.data_top} shadow`}>
+            <span className={s.data_top_icon} />
+            <Paragraph text="start" index={3} />
+          </div>
+          <div className="bold">
+            <Paragraph text="08/11/2024" index={4} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
